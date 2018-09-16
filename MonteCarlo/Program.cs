@@ -39,17 +39,19 @@ namespace MonteCarlo
             do
             {
                 double points = 0.0;
-               
+                    //Collects number of points user wants in the array
                     Console.WriteLine("How many points would you like to check?");                 
                     numberOfCords = int.Parse(Console.ReadLine());
                     Console.WriteLine("\n");
 
-              
+
+                    //Takes user input to create an array of that size and gives them a random value
                     Coordinate[] coordinates = new Coordinate[numberOfCords];
                     for (int i = 0; i < coordinates.Length; i++)
                     {
                          coordinates[i] = new Coordinate(Rnd);
                     }
+                    //iterates through the array and plugs random values into the hypotenuse equation
                     for (int i = 0; i < coordinates.Length; i++)
                     {
                         if (Hypotenuse(coordinates[i]) <= 1)
@@ -57,7 +59,7 @@ namespace MonteCarlo
                             points++;
                         }
                     }
-
+                    //displays difference between monte carlo simulation and actual value of Pi
                     double overlap = points / coordinates.Length;
                     overlap *= 4;
                     Console.WriteLine($"{overlap}");
